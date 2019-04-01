@@ -6,3 +6,7 @@ class Toma {
 		this.age = 0
 	}
 }
+
+const Toma1 = new Toma();
+
+console.log(Toma1);
