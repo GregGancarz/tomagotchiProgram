@@ -9,4 +9,7 @@ class Toma {
 
 const Toma1 = new Toma();
 
-console.log(Toma1);
+const game = {
+	lights: true,
+	
+}
