@@ -7,16 +7,14 @@ class Toma {
 		this.name = '';
 	}
 	feed(){
-		console.log("feed invoked");
-		if(this.hunger > 0){
-			this.hunder -= .750;
+		if(this.hunger > 0 && game.lights == true){
+			this.hunger -= 2;
 		};
 		$(`#hunger`).text(this.hunger);	
 	}
 	playWith(){
-		console.log("Play with invoked");
-		if(this.boredom > 0){
-			this.boredom -= .50
+		if(this.boredom > 0 && game.lights == true){
+			this.boredom -= 2
 		};
 		$(`#boredom`).text(this.boredom);	
 	}
@@ -36,7 +34,7 @@ class Toma {
 		if(game.lights == true) {
 			$(`body`).css('background-color', 'grey');
 			game.lights = false;
-		} else if(game.lights == false) {
+		} else {
 			$(`body`).css('background-color', 'yellow');
 			game.lights = true;
 		}
