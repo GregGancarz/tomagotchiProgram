@@ -38,17 +38,21 @@ class Toma {
 			game.lights = true;
 		}
 	}
-	updateMets(){
-		console.log("Metrics updated");
-		this.hunger += .50;
+	updateHunger(){
+		this.hunger += 1;
 		$(`#hunger`).text(this.hunger);
-		this.sleepiness += .750;
+	}
+	updateSleep(){
+		this.sleepiness += 1;
 		$(`#sleepiness`).text(this.sleepiness);
-		this.boredom += .250;
+	}
+	updateBored(){
+		this.boredom += 1;
 		$(`#boredom`).text(this.boredom);
-		this.age += .10
+	}		
+	updateAge(){
+		this.age += 1
 		$(`#age`).text(this.age);
-		console.log(toma1);
 	}
 }
 
@@ -80,10 +84,19 @@ const game = {
 		$(`#age`).text(toma1.age);
 		this.intervalId = setInterval(()=>{
 			this.time += 1;
-			if this.time % 5 === 
-			toma1.updateMets();	
-
-		}, 1000)
+			if(this.time % 10 === 0){
+				toma1.updateHunger();
+			}	
+			if(this.time % 5 === 0){
+				toma1.updateSleep();
+			}	
+			if(this.time % 15 === 0){
+				toma1.updateBored();
+			}	
+			if(this.time % 60 === 0){
+				toma1.updateAge();
+			}	
+		}, 200)
 	}
 }
 
@@ -98,7 +111,7 @@ $('#player').on('click', () => {
 $('#name-button').on('click', () => {
 	if(game.gameInProgress == false){
 		game.startGame();
-	} els {
+	} else {
 		toma1.changeName();
 	}
 });
