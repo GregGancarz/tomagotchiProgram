@@ -23,16 +23,15 @@ class Toma {
 	}
 	getRest(){
 		console.log('catching Zzzz');
-		this.sleepiness -= 1.25;
+		if(this.sleepiness > 0){ 
+			this.sleepiness -= 1;
+		}
 		$(`#sleepiness`).text(this.sleepiness);
 	}
 	switchLights(){
 		if(game.lights == true) {
 			$(`body`).css('background-color', 'grey');
 			game.lights = false;
-			tomaOne.getRest();	
-			$(`#sleepiness`).text(this.sleepiness);
-
 		} else if(game.lights == false) {
 			$(`body`).css('background-color', 'yellow');
 			game.lights = true;
@@ -72,21 +71,26 @@ const game = {
 	intervalId: null,
 	startGame(){
 		const tomaOne = new Toma();
+		this.currentPet = tomaOne
 		const $usersName = $(`#new-name-box`).val();
 		tomaOne.name = $usersName;
 		$(`#display-name`).text($usersName);
+
 		this.gameInProgress = true;
+
 		$('#name-button').text(`Change it's name`);
+
 		$(`#hunger`).text(tomaOne.hunger);
 		$(`#sleepiness`).text(tomaOne.sleepiness);
 		$(`#boredom`).text(tomaOne.boredom);
 		$(`#age`).text(tomaOne.age);
+
 		this.intervalId = setInterval(()=>{
 			this.time += 1;
 			if(this.time % 10 === 0){
 				tomaOne.updateHunger();
 			}	
-			if(this.time % 5 === 0){
+			if(this.time % 5 === 0 && this.lights == true){
 				tomaOne.updateSleep();
 			}	
 			if(this.time % 15 === 0){
@@ -95,6 +99,12 @@ const game = {
 			if(this.time % 60 === 0){
 				tomaOne.updateAge();
 			}	
+			if(this.time % 1 === 0){
+				$(`#clock`).text(this.time);
+			}
+			if(this.time % 1 === 0 && this.lights == false) {
+				tomaOne.getRest();
+			}
 		}, 200)
 	}
 }
@@ -102,18 +112,18 @@ const game = {
 
 
 $('#feeder').on('click', () => {
-	tomaOne.feed();
+	game.currentPet.feed();
 });
 $('#player').on('click', () => {
-	tomaOne.playWith();
+	game.currentPet.playWith();
 });
 $('#name-button').on('click', () => {
 	if(game.gameInProgress == false){
 		game.startGame();
 	} else {
-		tomaOne.changeName();
+		game.currentPet.changeName();
 	}
 });
 $('#lightSwitch').on('click', () => {
-	tomaOne.switchLights();
+	game.currentPet.switchLights();
 });
