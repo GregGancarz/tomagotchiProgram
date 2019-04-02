@@ -1,16 +1,54 @@
-img {
-	max-width: 200px;
-}
-
-#wrapper {
-	background-color: white;
-	margin: 50px;
-}
-
 body {
 	background-color: yellow;
 }
 
+#big-wrapper {
+	background-color: white;
+	margin: 60px;
+	border: 2px solid grey;
+}
+
+#metrics {
+	background-color: white
+	height: 205px;
+	margin: 5px;
+}
+
+#metrics .left, .right {
+	background-color: white;
+	display: inline-block;
+	width: 380px;
+	height: 205px;
+}
+
+#image {
+	background: url(https://cdn.pixabay.com/photo/2018/06/28/20/58/leaf-3504797_1280.jpg);
+	background-size: auto;
+	display: flex;
+	justify-content: center;
+	height: 260px;
+	margin: 15px;
+}
+
+img {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+#name-stuff	{
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	margin: 6px;
+}
+
 #new-name-box {
 	width: 200px;
+}
+
+#intActions {
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	margin: 6px;
 }

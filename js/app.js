@@ -40,10 +40,12 @@ class Toma {
 		}
 	}
 	updateHunger(){
-		if(this.age <= 5) {
-			this.hunger += 1;
-		} else if(this.age <=10) {
+		if(this.age > 9) {
+			this.hunger += 11;
+		} else if(this.age < 10) {
 			this.hunger += 2;
+		} else if(this.age < 5) {
+			this.hunger += 1;
 		}
 		$(`#hunger`).text(this.hunger);
 	}
@@ -76,6 +78,7 @@ const game = {
 	kill(){
 		clearInterval(this.intervalId);
 		console.log('Game over!');
+		$(`img`).attr('src', 'https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngonly.com%2Fwp-content%2Fuploads%2F2017%2F07%2FSkull-PNG-Danger-of-Death.png&f=1')
 	},
 	startGame(){
 		const tomaOne = new Toma();
@@ -95,16 +98,16 @@ const game = {
 
 		this.intervalId = setInterval(()=>{
 			this.time += 1;
-			if(this.time % 10 === 0){
+			if(this.time % 6 === 0){
 				tomaOne.updateHunger();
 			}	
-			if(this.time % 5 === 0 && this.lights == true){
+			if(this.time % 4 === 0 && this.lights == true){
 				tomaOne.updateSleep();
 			}	
-			if(this.time % 15 === 0){
+			if(this.time % 8 === 0){
 				tomaOne.updateBored();
 			}	
-			if(this.time % 60 === 0){
+			if(this.time % 20 === 0){
 				tomaOne.updateAge();
 			}	
 			if(this.time % 1 === 0){
@@ -118,7 +121,22 @@ const game = {
 					this.kill();
 				}
 			}
-		}, 200)
+			if(this.time % 1 === 0) {
+				if(this.currentPet.age > 9) {
+					$(`img`).attr("src", "https://openclipart.org/image/2400px/svg_to_png/110023/Monarch-Butterfly-by-Merlin2525.png")
+				}
+				else if(this.currentPet.age > 4) {
+					$(`img`).attr("src", "https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F-OusdTQhBByc%2FTzEoV3sP11I%2FAAAAAAAAAQY%2FMYiK0pM5qdM%2Fs1600%2FCocoon01.png&f=1")
+				}
+			}
+			if(this.time % 2 == 0) {
+				$(`img`).css("padding-top", 50);
+				$(`img`).css("padding-bottom", 0);
+			} else {
+				$(`img`).css("padding-top", 0);
+				$(`img`).css("padding-bottom", 50);
+			}
+		}, 500)
 	}
 }
 
@@ -139,6 +157,5 @@ $('#name-button').on('click', () => {
 });
 $('#lightSwitch').on('click', () => {
 	game.currentPet.switchLights();
-	console.log(game.currentPet.hunger);
 });
 
