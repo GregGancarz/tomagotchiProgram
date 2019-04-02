@@ -30,7 +30,7 @@ class Toma {
 		if(game.lights == true) {
 			$(`body`).css('background-color', 'grey');
 			game.lights = false;
-			toma1.getRest();	
+			tomaOne.getRest();	
 			$(`#sleepiness`).text(this.sleepiness);
 
 		} else if(game.lights == false) {
@@ -63,7 +63,7 @@ class Toma {
 
 
 
-let toma1 = ''
+let tomaOne = ''
 
 const game = {
 	lights: true,
@@ -72,29 +72,28 @@ const game = {
 	intervalId: null,
 	startGame(){
 		const tomaOne = new Toma();
-		toma1 = tomaOne
 		const $usersName = $(`#new-name-box`).val();
-		toma1.name = $usersName;
+		tomaOne.name = $usersName;
 		$(`#display-name`).text($usersName);
 		this.gameInProgress = true;
 		$('#name-button').text(`Change it's name`);
-		$(`#hunger`).text(toma1.hunger);
-		$(`#sleepiness`).text(toma1.sleepiness);
-		$(`#boredom`).text(toma1.boredom);
-		$(`#age`).text(toma1.age);
+		$(`#hunger`).text(tomaOne.hunger);
+		$(`#sleepiness`).text(tomaOne.sleepiness);
+		$(`#boredom`).text(tomaOne.boredom);
+		$(`#age`).text(tomaOne.age);
 		this.intervalId = setInterval(()=>{
 			this.time += 1;
 			if(this.time % 10 === 0){
-				toma1.updateHunger();
+				tomaOne.updateHunger();
 			}	
 			if(this.time % 5 === 0){
-				toma1.updateSleep();
+				tomaOne.updateSleep();
 			}	
 			if(this.time % 15 === 0){
-				toma1.updateBored();
+				tomaOne.updateBored();
 			}	
 			if(this.time % 60 === 0){
-				toma1.updateAge();
+				tomaOne.updateAge();
 			}	
 		}, 200)
 	}
@@ -103,18 +102,18 @@ const game = {
 
 
 $('#feeder').on('click', () => {
-	toma1.feed();
+	tomaOne.feed();
 });
 $('#player').on('click', () => {
-	toma1.playWith();
+	tomaOne.playWith();
 });
 $('#name-button').on('click', () => {
 	if(game.gameInProgress == false){
 		game.startGame();
 	} else {
-		toma1.changeName();
+		tomaOne.changeName();
 	}
 });
 $('#lightSwitch').on('click', () => {
-	toma1.switchLights();
+	tomaOne.switchLights();
 });
