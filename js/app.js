@@ -61,9 +61,6 @@ class Toma {
 
 
 
-
-
-
 let tomaOne = ''
 
 const game = {
@@ -71,6 +68,11 @@ const game = {
 	time: 0,
 	gameInProgress: false,
 	intervalId: null,
+	currentPet: '',
+	kill(){
+		clearInterval(this.intervalId);
+		console.log('Game over!');
+	},
 	startGame(){
 		const tomaOne = new Toma();
 		this.currentPet = tomaOne
@@ -107,6 +109,11 @@ const game = {
 			if(this.time % 1 === 0 && this.lights == false) {
 				tomaOne.getRest();
 			}
+			if(this.time % 1 === 0) {
+				if (this.currentPet.hunger === 10 || this.currentPet.sleepiness === 10 || this.currentPet.boredom === 10){
+					this.kill();
+			}
+			}
 		}, 200)
 	}
 }
@@ -128,4 +135,6 @@ $('#name-button').on('click', () => {
 });
 $('#lightSwitch').on('click', () => {
 	game.currentPet.switchLights();
+	console.log(game.currentPet.hunger);
 });
+
