@@ -40,7 +40,11 @@ class Toma {
 		}
 	}
 	updateHunger(){
-		this.hunger += 1;
+		if(this.age <= 5) {
+			this.hunger += 1;
+		} else if(this.age <=10) {
+			this.hunger += 2;
+		}
 		$(`#hunger`).text(this.hunger);
 	}
 	updateSleep(){
@@ -112,7 +116,7 @@ const game = {
 			if(this.time % 1 === 0) {
 				if (this.currentPet.hunger === 10 || this.currentPet.sleepiness === 10 || this.currentPet.boredom === 10){
 					this.kill();
-			}
+				}
 			}
 		}, 200)
 	}
