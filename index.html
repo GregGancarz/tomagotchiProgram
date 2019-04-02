@@ -6,25 +6,38 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 </head>
 <body>
-	<div id="hunger" class="metric"></div>
-	<div id="sleepiness" class="metric"></div>
-	<div id="boredom" class="metric"></div>
-	<div id="age" class="metric"></div>
+	<div id='wrapper'>
+		<!-- Metric logs -->
+		<p>HUNGER:</p>
+		<div id="hunger" class="metric"></div>
+		<p>SLEEPINESS:</p>
+		<div id="sleepiness" class="metric"></div>
+		<p>BOREDOM:</p>
+		<div id="boredom" class="metric"></div>
+		<p>AGE:</p>
+		<div id="age" class="metric"></div>
+		<!-- Name being visually displayed -->
+		<p>NAME:</p>
+		<div id="display-name"></div>
+	
 
-	<div id="name">Her name is Mystery</div>
+		<img src="https://vignette.wikia.nocookie.net/tamagotchi/images/	b/b3/Babytchi.png/revision/latest?cb=20130906105227">
+	
+
+		<div></div>
 
 
+		<input id="new-name-box" type="text" placeholder="Name your tamagotchi to begin!">
+		<button id='name-button' type='submit'>Submit</button>
 
 
-	<img src="https://vignette.wikia.nocookie.net/tamagotchi/images/b/b3/Babytchi.png/revision/latest?cb=20130906105227">
+		<div></div>
 
-	<div></div>
-	<input type="text" placeholder="Enter new name" id="new-name">
-	<button type='submit' id='name-button'>Submit</button>
-	<div></div>
-	<button type="submit" id="lightSwitch">Lights on/off</button>
-	<button type="submit" id="feeder">Feed it</button>
 
+		<button type="submit" id="feeder">Feed it</button>
+		<button type="submit" id="player">Play with it</button>
+		<button type="submit" id="lightSwitch">Lights on/off</button>
+	</div>
 
 	
 	<script type="text/javascript" src="js/app.js"></script>
