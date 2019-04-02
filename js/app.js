@@ -8,12 +8,16 @@ class Toma {
 	}
 	feed(){
 		console.log("feed invoked");
-		this.hunger -= .750;
+		if(this.hunger > 0){
+			this.hunder -= .750;
+		};
 		$(`#hunger`).text(this.hunger);	
 	}
 	playWith(){
 		console.log("Play with invoked");
-		this.boredom -= .50;
+		if(this.boredom > 0){
+			this.boredom -= .50
+		};
 		$(`#boredom`).text(this.boredom);	
 	}
 	changeName(){
@@ -24,8 +28,8 @@ class Toma {
 	getRest(){
 		console.log('catching Zzzz');
 		if(this.sleepiness > 0){ 
-			this.sleepiness -= 1;
-		}
+			this.sleepiness -= 1
+		};
 		$(`#sleepiness`).text(this.sleepiness);
 	}
 	switchLights(){
