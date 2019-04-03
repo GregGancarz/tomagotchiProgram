@@ -24,7 +24,6 @@ class Toma {
 		$(`#display-name`).text(this.name);
 	}
 	getRest(){
-		console.log('catching Zzzz');
 		if(this.sleepiness > 0){ 
 			this.sleepiness -= 1
 		};
@@ -42,7 +41,7 @@ class Toma {
 	updateHunger(){
 		if(this.age > 9) {
 			this.hunger += 3;
-		} else if(this.age < 10) {
+		} else if(this.age > 4) {
 			this.hunger += 2;
 		} else if(this.age < 5) {
 			this.hunger += 1;
@@ -63,10 +62,6 @@ class Toma {
 	}
 }
 
-
-
-
-
 let tomaOne = ''
 
 const game = {
@@ -77,8 +72,8 @@ const game = {
 	currentPet: '',
 	kill(){
 		clearInterval(this.intervalId);
+		$('img').attr('src', 'https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngonly.com%2Fwp-content%2Fuploads%2F2017%2F07%2FSkull-PNG-Danger-of-Death.png&f=1');
 		console.log('Game over!');
-		$(`img`).attr('src', 'https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngonly.com%2Fwp-content%2Fuploads%2F2017%2F07%2FSkull-PNG-Danger-of-Death.png&f=1')
 	},
 	startGame(){
 		const tomaOne = new Toma();
@@ -107,27 +102,22 @@ const game = {
 			if(this.time % 8 === 0){
 				tomaOne.updateBored();
 			}	
-			if(this.time % 20 === 0){
+			if(this.time % 15 === 0){
 				tomaOne.updateAge();
 			}	
-			if(this.time % 1 === 0){
-				$(`#clock`).text(this.time);
-			}
-			if(this.time % 1 === 0 && this.lights == false) {
+			$(`#clock`).text(this.time);
+			
+			if(this.lights == false) {
 				tomaOne.getRest();
 			}
-			if(this.time % 1 === 0) {
-				if (this.currentPet.hunger === 10 || this.currentPet.sleepiness === 10 || this.currentPet.boredom === 10){
-					this.kill();
-				}
+			if(this.currentPet.age > 9) {
+				$(`img`).attr("src", "https://openclipart.org/image/2400px/svg_to_png/110023/Monarch-Butterfly-by-Merlin2525.png")
 			}
-			if(this.time % 1 === 0) {
-				if(this.currentPet.age > 9) {
-					$(`img`).attr("src", "https://openclipart.org/image/2400px/svg_to_png/110023/Monarch-Butterfly-by-Merlin2525.png")
-				}
-				else if(this.currentPet.age > 4) {
-					$(`img`).attr("src", "https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F-OusdTQhBByc%2FTzEoV3sP11I%2FAAAAAAAAAQY%2FMYiK0pM5qdM%2Fs1600%2FCocoon01.png&f=1")
-				}
+			else if(this.currentPet.age > 4) {
+				$(`img`).attr("src", "https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F-OusdTQhBByc%2FTzEoV3sP11I%2FAAAAAAAAAQY%2FMYiK0pM5qdM%2Fs1600%2FCocoon01.png&f=1")
+			}
+			if (this.currentPet.hunger > 9 || this.currentPet.sleepiness > 9 || this.currentPet.boredom > 9){
+				this.kill();
 			}
 			if(this.time % 2 == 0) {
 				$(`img`).css("padding-top", 50);
@@ -139,8 +129,6 @@ const game = {
 		}, 500)
 	}
 }
-
-
 
 $('#feeder').on('click', () => {
 	game.currentPet.feed();
