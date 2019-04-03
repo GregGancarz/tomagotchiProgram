@@ -93,16 +93,16 @@ const game = {
 
 		this.intervalId = setInterval(()=>{
 			this.time += 1;
-			if(this.time % 6 === 0){
+			if(this.time % 5 === 0){
 				tomaOne.updateHunger();
 			}	
-			if(this.time % 4 === 0 && this.lights == true){
+			if(this.time % 3 === 0 && this.lights == true){
 				tomaOne.updateSleep();
 			}	
-			if(this.time % 8 === 0){
+			if(this.time % 7 === 0){
 				tomaOne.updateBored();
 			}	
-			if(this.time % 15 === 0){
+			if(this.time % 11 === 0){
 				tomaOne.updateAge();
 			}	
 			$(`#clock`).text(this.time);
