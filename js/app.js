@@ -7,13 +7,13 @@ class Toma {
 		this.name = '';
 	}
 	feed(){
-		if(this.hunger > 0 && game.lights == true){
+		if(this.hunger > 1 && game.lights == true){
 			this.hunger -= 2;
 		};
 		$(`#hunger`).text(this.hunger);	
 	}
 	playWith(){
-		if(this.boredom > 0 && game.lights == true){
+		if(this.boredom > 1 && game.lights == true){
 			this.boredom -= 2
 		};
 		$(`#boredom`).text(this.boredom);	
@@ -41,7 +41,7 @@ class Toma {
 	}
 	updateHunger(){
 		if(this.age > 9) {
-			this.hunger += 11;
+			this.hunger += 3;
 		} else if(this.age < 10) {
 			this.hunger += 2;
 		} else if(this.age < 5) {
